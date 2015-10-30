@@ -1,7 +1,3 @@
--   Installation
--   Contact
-
-
 
 **brokenCSV** generates report on comma-broken status of CSV(s), including broken rows and potential offending columns needing to be quoted in file. If path param is a folder, for readability a report named \file{csv_comma_broken_report.txt} is dropped into path folder and opened automatically to source pane. But if path param is only a file, then the report is only printed to console.
 
