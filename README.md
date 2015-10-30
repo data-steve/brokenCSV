@@ -22,7 +22,7 @@ to install the development version:
 Contact
 =======
 
-You are welcome to: \* submit suggestions and bug-reports at:
-<https://github.com/steventsimpson/brokenCSV/issues> \* send a pull
-request on: <https://github.com/steventsimpson/brokenCSV/> \* compose a
-friendly e-mail to: <you@somewhere.net>
+You are welcome to: 
+- submit suggestions and bug-reports at: <https://github.com/steventsimpson/brokenCSV/issues> 
+- send a pull request on: <https://github.com/steventsimpson/brokenCSV/> 
+- compose a friendly e-mail to: <steven.troy.simpson@gmail.com>

@@ -1,0 +1,17 @@
+Package: brokenCSV
+Title: Report on CSV Comma-Brokenness
+Version: 0.0.1
+Authors@R: c(
+    person("Steve", "Simpson", email = "steven.troy.simpson@gmail.com", role = c("aut", "cre")),
+    person("Tyler", "Rinker", email = "trinker@gmail.com", role = c("aut")),
+    person("CampusLabs", role = "cph")
+    )
+Maintainer: Steve Simpson <steven.troy.simpson@gmail.com>
+Description: Generates report on comma-broken status of CSV(s), including broken rows and potential offending columns needing to be quoted in file. If path param is a folder, for readability a report named \file{csv_comma_broken_report.txt} is dropped into path folder and opened automatically to source pane. But if path param is only a file, then the report is only printed to console.
+Depends: R (>= 3.2.2)
+Suggests: testthat
+Imports: stringi
+Date: 2015-10-30
+License: GPL-2
+LazyData: TRUE
+Roxygen: list(wrap = FALSE)
