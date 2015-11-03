@@ -19,10 +19,10 @@
 #' }
 comma_broken_csv <- function(path) {
     if (file.info(path)[["isdir"]]) {
-        sink("csv_comma_broken_report.txt", split = TRUE)
+        sink(paste0(path,"csv_comma_broken_report.txt"), split = TRUE)
         are_csv_comma_broken(path)
         sink()
-        file.show("csv_comma_broken_report.txt")
+        file.show(paste0(path,"csv_comma_broken_report.txt"))
     }
     else {
         is_csv_comma_broken(path)
