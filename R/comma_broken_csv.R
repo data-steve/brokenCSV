@@ -17,7 +17,7 @@
 #' # then lapply over the file paths like so:
 #' lapply(c("file.path1", "file.path2"), comma_broken_csv))
 #' }
-comma_broken_csv <- function(path) {
+comma_broken_csv <- function(path = ".") {
     if (file.info(path)[["isdir"]]) {
         sink(paste0(path,"csv_comma_broken_report.txt"), split = TRUE)
         are_csv_comma_broken(path)
