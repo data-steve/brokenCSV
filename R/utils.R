@@ -21,27 +21,34 @@ candidates_for_quotes <- function(path) {
 }
 
 
+is_csv <- function(path){
+  tools::file_ext(path)=="csv"
+}
 
 is_csv_comma_broken <- function(path){
+ if (is_csv(path)) {
+   x <- readLines(path)
 
-  x <- readLines(path)
+   y <- stringi::stri_count_regex(x, ",")
+   offender_rows <- which(y > as.numeric(names(which.max(table(y)))))
 
-  y <- stringi::stri_count_regex(x, ",")
-  offender_rows <- which(y > as.numeric(names(which.max(table(y)))))
+   cat("############################################\n\t\t",
+       basename(path),
+       "\n############################################\n\n")
 
-  cat("############################################\n\t\t",
-      basename(path),
-      "\n############################################\n\n")
+   if (length(offender_rows)>0) {
+     candidates_for_quotes(path)
+     cat(sprintf("\n \n These rows have no comma sense:\n%s"
+                 , paste(offender_rows, collapse=", ")), "\n\n\n\n")
+   } else {
+     cat("all systems a go \n\n")
+     # return(invisible(TRUE))
+      }
+   } else {
+     cat(sprintf("Error:  File %s is not a CSV file.\n\tPlease save it as a '.csv' file and try again.", sQuote(path)))
+   }
+ }
 
-  if (length(offender_rows)>0) {
-    candidates_for_quotes(path)
-    cat(sprintf("\n \n These rows have no comma sense:\n%s"
-                , paste(offender_rows, collapse=", ")), "\n\n\n\n")
-  } else {
-    cat("all systems a go \n\n")
-    # return(invisible(TRUE))
-  }
-}
 
 
 are_csv_comma_broken <- function(path){
