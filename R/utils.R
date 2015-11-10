@@ -56,7 +56,7 @@ are_csv_comma_broken <- function(path){
   cat("############################################\n",
       "############################################\n\t\t",
       "Title: Comma-Broken Statuses of CSVs in following directory\n\t\t",
-      "Path to CSVs: ", path,
+      "Path to CSVs: ", sQuote(path),
       "\n############################################\n",
       "############################################\n\n\n\n\n\n")
 
