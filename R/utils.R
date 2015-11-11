@@ -38,8 +38,8 @@ is_csv_comma_broken <- function(path){
 
    if (length(offender_rows)>0) {
      candidates_for_quotes(path)
-     cat(sprintf("\n \n These rows have no comma sense:\n%s"
-                 , paste(offender_rows, collapse=", ")), "\n\n\n\n")
+     cat(sprintf("\n \n Out of %d total rows, the following %d rows have no comma sense:\n%s"
+                 ,length(x), length(offender_rows), paste(offender_rows, collapse=", ")), "\n\n\n\n")
    } else {
      cat("all systems a go \n\n")
      # return(invisible(TRUE))
