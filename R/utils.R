@@ -25,29 +25,33 @@ is_csv <- function(path){
   tools::file_ext(path)=="csv"
 }
 
-is_csv_comma_broken <- function(path){
- if (is_csv(path)) {
-   x <- readLines(path)
+is_csv_comma_broken <- function (path) {
+	if (is_csv(path)) {
+		x <- readLines(path)
+		gsub("(\")(.*?)(\")", "[PLACE HOLDER]", x) -> reged
+		stringi::stri_count_regex(reged, ",") -> y2
+		which(y2 > as.numeric(names(which.max(table(y2))))) -> string_count 
+		
+		
+		
+		cat("############################################\n\t\t", 
+			basename(path), "\n############################################\n\n")
+		if (!length(unique(string_count))==1) {
+			candidates_for_quotes(path)
+			cat(sprintf("\n \n Out of %d total rows, the following %d rows have no comma sense:\n%s", 
+						length(x), length(string_count), paste(string_count, 
+															   collapse = ", ")), "\n\n\n\n")
+		}
+		else {
+			cat("all systems a go \n\n")
+		}
+	}
+	else {
+		cat(sprintf("Error:  File %s is not a CSV file.\n\tPlease save it as a '.csv' file and try again.", 
+					sQuote(path)))
+	}
+}
 
-   y <- stringi::stri_count_regex(x, ",")
-   offender_rows <- which(y > as.numeric(names(which.max(table(y)))))
-
-   cat("############################################\n\t\t",
-       basename(path),
-       "\n############################################\n\n")
-
-   if (length(offender_rows)>0) {
-     candidates_for_quotes(path)
-     cat(sprintf("\n \n Out of %d total rows, the following %d rows have no comma sense:\n%s"
-                 ,length(x), length(offender_rows), paste(offender_rows, collapse=", ")), "\n\n\n\n")
-   } else {
-     cat("all systems a go \n\n")
-     # return(invisible(TRUE))
-      }
-   } else {
-     cat(sprintf("Error:  File %s is not a CSV file.\n\tPlease save it as a '.csv' file and try again.", sQuote(path)))
-   }
- }
 
 
 

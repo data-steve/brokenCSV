@@ -4,7 +4,7 @@
 \alias{comma_broken_csv}
 \title{Generates Report on Comma-Broken Status of CSV(s)}
 \usage{
-comma_broken_csv(path)
+comma_broken_csv(path = ".")
 }
 \arguments{
 \item{path}{path-to-file or path-to-folder}
