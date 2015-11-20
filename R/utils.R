@@ -28,7 +28,7 @@ is_csv <- function(path){
 is_csv_comma_broken <- function (path) {
 	if (is_csv(path)) {
 		x <- readLines(path)
-		gsub("(\")(.*?)(\")", "[PLACE HOLDER]", x) -> reged
+		stringi::stri_replace_all_regex(x, "(?<=(,|^))(\")(.*?)(\")(?=($|,))", "[PLACE HOLDER]") -> reged
 		stringi::stri_count_regex(reged, ",") -> y2
 		which(y2 > as.numeric(names(which.max(table(y2))))) -> string_count 
 		
